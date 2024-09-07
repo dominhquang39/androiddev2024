@@ -12,5 +12,5 @@ Student Info
 
 * Name: Đỗ Minh Quang
 * ID: 22BI13379
-* Group ID: *Your Group ID here*
-* Project Name: *Your Project Name here*
+* Group ID: 7
+* Project Name: Stock Dashboard
