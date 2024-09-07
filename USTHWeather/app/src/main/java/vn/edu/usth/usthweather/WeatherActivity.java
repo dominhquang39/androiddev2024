@@ -1,47 +1,66 @@
-package vn.edu.usth.usthweather
+package vn.edu.usth.usthweather;
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import vn.edu.usth.usthweather.ui.theme.USTHWeatherTheme
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+import android.util.Log;
 
-class WeatherActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            USTHWeatherTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
-        }
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+public class WeatherActivity extends AppCompatActivity {
+    private static final String TAG = "Weather";
+    @SuppressLint("MissingInflatedId")
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_weather);
+//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+//            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+//            return insets;
+//        });
+        Log.i(TAG, "Create");
+
+        ForecastFragment firstFragment = new ForecastFragment();
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.main, firstFragment).commit();
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+        Log.i(TAG, "Start");
+    }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    USTHWeatherTheme {
-        Greeting("Android")
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        Log.i(TAG, "Resume");
+    }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+        Log.i(TAG, "Pause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i(TAG, "Stop");
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+        Log.i(TAG, "Destroy");
     }
 }
