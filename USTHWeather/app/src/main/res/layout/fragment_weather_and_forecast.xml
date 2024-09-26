@@ -22,8 +22,8 @@
     <androidx.fragment.app.FragmentContainerView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:name="vn.edu.usth.usthweather.ForecastFragment"
-        android:id = "@+id/fragment_forecast"
-        tools:layout = "@layout/fragment_forecast" />
+        android:name="vn.edu.usth.usthweather.Forecast1Fragment"
+        android:id = "@+id/fragment_forecast1"
+        tools:layout = "@layout/fragment_forecast1" />
 
 </LinearLayout>

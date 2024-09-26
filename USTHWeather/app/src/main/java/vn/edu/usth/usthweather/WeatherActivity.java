@@ -9,10 +9,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class WeatherActivity extends AppCompatActivity {
@@ -41,6 +46,8 @@ public class WeatherActivity extends AppCompatActivity {
             tab.setText(cities[position]);
         }).attach();
 
+//          Forecast1Fragment forecast1Fragment = new Forecast1Fragment();
+//          getSupportFragmentManager().beginTransaction().replace(R.id.main, forecast1Fragment).commit();
 //        ForecastFragment firstFragment = new ForecastFragment();
 //
 //        getSupportFragmentManager().beginTransaction().replace(R.id.main, firstFragment).commit();

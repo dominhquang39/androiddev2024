@@ -11,6 +11,7 @@
     android:paddingRight="20dp"
     tools:context=".WeatherActivity">
 
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
