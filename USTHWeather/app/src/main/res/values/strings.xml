@@ -26,4 +26,7 @@
     <string name="day">Day</string>
     <string name="temperature">Temperature</string>
     <string name="weather">Weather</string>
+    <string name="refresh_icon">Refresh</string>
+    <string name="three_dots">Three dots</string>
+    <string name="title_activity_pref">PrefActivity</string>
 </resources>
