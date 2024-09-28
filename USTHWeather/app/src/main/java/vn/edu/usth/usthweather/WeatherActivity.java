@@ -1,6 +1,7 @@
 package vn.edu.usth.usthweather;
 
 import android.annotation.SuppressLint;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -45,6 +46,11 @@ public class WeatherActivity extends AppCompatActivity {
 
             tab.setText(cities[position]);
         }).attach();
+
+        MediaPlayer mediaPlayer = MediaPlayer.create(WeatherActivity.this, R.raw.sample);
+        mediaPlayer.setLooping(true);
+        mediaPlayer.start();
+
 
 //          Forecast1Fragment forecast1Fragment = new Forecast1Fragment();
 //          getSupportFragmentManager().beginTransaction().replace(R.id.main, forecast1Fragment).commit();
