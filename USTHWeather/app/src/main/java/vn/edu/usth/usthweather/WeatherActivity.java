@@ -1,9 +1,14 @@
 package vn.edu.usth.usthweather;
 
+import static android.app.PendingIntent.getActivity;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -29,6 +34,7 @@ import java.util.List;
 public class WeatherActivity extends AppCompatActivity {
     private static final String TAG = "Weather";
     private MediaPlayer mediaPlayer;
+    private RefreshHandler refreshHandler;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +66,15 @@ public class WeatherActivity extends AppCompatActivity {
         mediaPlayer.setLooping(true);
         mediaPlayer.start();
 
+        final Handler handler = new Handler(Looper.getMainLooper()) {
+            @Override
+            public void handleMessage(Message msg) {
+                String content = msg.getData().getString("server_response");
+                Toast.makeText(WeatherActivity.this, content, Toast.LENGTH_SHORT).show();
+            }
+        };
 
+        refreshHandler = new RefreshHandler(handler);
 //          Forecast1Fragment forecast1Fragment = new Forecast1Fragment();
 //          getSupportFragmentManager().beginTransaction().replace(R.id.main, forecast1Fragment).commit();
 //        ForecastFragment firstFragment = new ForecastFragment();
@@ -79,7 +93,7 @@ public class WeatherActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.refresh:
-                Toast.makeText(this, "Refreshed", Toast.LENGTH_SHORT).show();
+                refreshHandler.NetworkRequest();
                 return true;
 
             case R.id.settings:
