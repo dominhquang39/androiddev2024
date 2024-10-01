@@ -29,4 +29,6 @@
     <string name="refresh_icon">Refresh</string>
     <string name="three_dots">Three dots</string>
     <string name="title_activity_pref">PrefActivity</string>
+    <string name="setting_icon">Setting Icon</string>
+    <string name="back_button">Back Button</string>
 </resources>

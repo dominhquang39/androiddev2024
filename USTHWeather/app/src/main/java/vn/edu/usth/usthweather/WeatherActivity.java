@@ -28,6 +28,7 @@ import java.util.List;
 
 public class WeatherActivity extends AppCompatActivity {
     private static final String TAG = "Weather";
+    private MediaPlayer mediaPlayer;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +56,7 @@ public class WeatherActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        MediaPlayer mediaPlayer = MediaPlayer.create(WeatherActivity.this, R.raw.sample);
+        mediaPlayer = MediaPlayer.create(WeatherActivity.this, R.raw.sample);
         mediaPlayer.setLooping(true);
         mediaPlayer.start();
 
@@ -76,15 +77,18 @@ public class WeatherActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.refresh) {
-            Toast.makeText(this, "Refresh clicked", Toast.LENGTH_SHORT).show();
-            return true;
-        } else if (item.getItemId() == R.id.dots) {
-            Intent intent = new Intent(this, PrefActivity.class);
-            startActivity(intent);
-            return true;
-        } else {
-            return super.onOptionsItemSelected(item);
+        switch (item.getItemId()) {
+            case R.id.refresh:
+                Toast.makeText(this, "Refreshed", Toast.LENGTH_SHORT).show();
+                return true;
+
+            case R.id.settings:
+                Intent intent = new Intent(this, PrefActivity.class);
+                startActivity(intent);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 
@@ -121,5 +125,10 @@ public class WeatherActivity extends AppCompatActivity {
     {
         super.onDestroy();
         Log.i(TAG, "Destroy");
+
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+        }
     }
 }

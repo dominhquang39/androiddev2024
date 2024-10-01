@@ -8,8 +8,8 @@
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/dots"
-        android:icon="@drawable/three_dots"
-        android:title="@string/three_dots"
+        android:id="@+id/settings"
+        android:icon="@drawable/settings"
+        android:title="@string/setting_icon"
         app:showAsAction="ifRoom"/>
 </menu>
