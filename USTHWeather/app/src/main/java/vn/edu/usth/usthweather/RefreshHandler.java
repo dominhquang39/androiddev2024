@@ -26,7 +26,7 @@ public class RefreshHandler {
                 }
 
                 Bundle bundle = new Bundle();
-                bundle.putString("server_response", "Hello NQA");
+                bundle.putString("server_response", "Refreshed");
 
                 Message msg = new Message();
                 msg.setData(bundle);
